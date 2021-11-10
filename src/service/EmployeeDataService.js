@@ -2,20 +2,20 @@ import axios from 'axios'
 
 class EmployeeDataService {
     
-    retrieveAllEmployees() {
-        return axios.get(`http://localhost:8080/retrieveAllEmployees`);
+    retrieveAllTexts() {
+        return axios.get(`http://localhost:8080/retrieveAllTexts`);
     }
     
-    deleteEmployee(id) {
-        return axios.delete(`http://localhost:8080/deleteEmployee/${id}`)
+    deleteText(id) {
+        return axios.delete(`http://localhost:8080/deleteText/${id}`)
     }
 
-    updateEmployee(employee) {
-        return axios.put(`http://localhost:8080/updateEmployee/`, employee)
+    updateText(text) {
+        return axios.put(`http://localhost:8080/updateText/`, text)
     }
 
-    createEmployee(employee) {
-        return axios.post(`http://localhost:8080/addEmployee/`, employee)
+    createText(text) {
+        return axios.post(`http://localhost:8080/addText/`, text)
     }
 }
 
