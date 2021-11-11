@@ -18,14 +18,16 @@ class TextRegistryComponent extends Component {
     }
 
     refreshTextRegistry() {
-        TextDataService.retrieveAllTexts()
-        .then(
-            response => {
-                this.setState({
-                    texts: response.data,
-                })
-            }
-        )
+        setTimeout(() => {
+            TextDataService.retrieveAllTexts()
+            .then(
+                response => {
+                    this.setState({
+                        texts: response.data,
+                    })
+                }
+            )
+        }, 250)
     }
 
     deleteTextClicked(id, content) {
@@ -54,17 +56,23 @@ class TextRegistryComponent extends Component {
        return(
            <div className="container">
                <h1 style={{textAlign:"center"}}>Text Registry</h1><br/>
-               <div className="jumbotron"  style={{backgroundColor: "gray", color: "white"}}>
-                   <table className="table">
+               <div className="jumbotron sticky-top"  style={{textAlign: "center",  color: "white"}}>
+
+                    <table className="table table-striped">         
                        <thead>
-                           <tr style={{textAlign: "center" , color: "black"}}>
+                            <tr class="table-dark" style={{textAlign: "center"}}>    
                                <th>Id</th>
                                <th>content</th>
                                <th>artist</th>
                                <th>category</th>
                                <th>source</th>
-                               <th>Delete</th>
-                               <th>Update</th>
+                               <th></th>
+                               <th>
+                                    <div >
+                                        <br/>
+                                        <button className="btn btn-primary" onClick={this.addTextClicked}>Add Text</button>
+                                    </div>
+                               </th>
                            </tr>
                        </thead>
                        <tbody>
@@ -84,10 +92,8 @@ class TextRegistryComponent extends Component {
                            }
                        </tbody>
                    </table>
-                   <div className="row">
-                       <br/>
-                       <button className="btn btn-success" onClick={this.addTextClicked}>Add Text</button>
-                   </div>
+                   <br/>
+                   <br/>
                </div>
            </div>
        )
