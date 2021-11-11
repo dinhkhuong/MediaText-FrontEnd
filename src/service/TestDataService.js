@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-class EmployeeDataService {
+class TextDataService {
     
     retrieveAllTexts() {
         return axios.get(`http://localhost:8080/retrieveAllTexts`);
@@ -19,4 +19,4 @@ class EmployeeDataService {
     }
 }
 
-export default new EmployeeDataService()
+export default new TextDataService()

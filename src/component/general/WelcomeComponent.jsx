@@ -13,13 +13,12 @@ class WelcomeComponent extends Component {
             <div className="container">
                 <br/><br/>
                 <div className="jumbotron" style={{textAlign:"center", backgroundColor:"Black"}}>
-                <h1 style={{color:"Green"}}>Welcome {this.state.name} to the Employee Registry!!!</h1>
+                <h1 style={{color:"Green"}}>Welcome {this.state.name} to the Text Registry!!!</h1>
                 <br/>
-                <h2 style={{color:"white"}}>You can manage your employees <Link to="/EmployeeRegistry">here</Link></h2> 
+                <h2 style={{color:"white"}}>You can manage your texts <Link to="/TextRegistry">here</Link></h2> 
                 </div>
             </div>
         )
     }
 }
-
 export default WelcomeComponent;  

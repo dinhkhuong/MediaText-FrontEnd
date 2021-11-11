@@ -1,15 +1,16 @@
 import React, {Component} from 'react'
-import EmployeeDataService from '../../service/EmployeeDataService'
+import TextDataService from '../../service/TestDataService'
 
-class AddEmployee extends Component {
+class AddText extends Component {
     constructor(props) {
         super(props)
         this.state = {
             id: this.props.match.params.id,
-            jobTitle: '',
-            firstName: '',
-            lastName: '',
-            email: ''
+            content: '',
+            artist: '',
+            category: '',
+            source: '',
+            
         }
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
@@ -22,23 +23,25 @@ class AddEmployee extends Component {
     }
 
     handleSubmit() {
-        let employee = {
+        let text = {
             id: this.state.id,
-            jobTitle: this.state.jobTitle,
-            firstName: this.state.firstName,
-            lastName: this.state.lastName,
-            email: this.state.email
+            content: this.state.content,
+            artist: this.state.artist,
+            category: this.state.category,
+            source: this.state.source
         }
+        TextDataService.createText(text)
+            .then(this.props.history.push(`/TextRegistry`))
+
         
-        EmployeeDataService.createEmployee(employee)
-            .then(this.props.history.push(`/EmployeeRegistry`))
+
     }
 
     render() {
         return(
             <div>
                 <div className="jumbotron" style={{backgroundColor: "gray"}}>
-                <h3 style={{textAlign: "center"}}>Add Employee</h3>
+                <h3 style={{textAlign: "center"}}>Add Text</h3>
                 </div>
                 <div className="container">
                     <form onSubmit={this.handleSubmit}>
@@ -47,20 +50,20 @@ class AddEmployee extends Component {
                             <input className="form-control" type="text" value={this.state.id} disabled/>
                         </div>
                         <div>
-                            <lable>Job Title:</lable>
-                            <input className="form-control" type="text" name="jobTitle" onChange={this.handleChange}/>
+                            <label>Content:</label>
+                            <input className="form-control" type="text" name="content" onChange={this.handleChange}/>
                         </div>
                         <div>
-                            <lable>First Name:</lable>
-                            <input className="form-control" type="text" name="firstName" onChange={this.handleChange}/>
+                            <label>Artist:</label>
+                            <input className="form-control" type="text" name="artist" onChange={this.handleChange}/>
                         </div>       
                         <div>
-                            <lable>Last Name:</lable>
-                            <input className="form-control" type="text" name="lastName" onChange={this.handleChange}/>
+                            <label>Category:</label>
+                            <input className="form-control" type="text" name="category" onChange={this.handleChange}/>
                         </div>      
                         <div>
-                            <lable>Email:</lable>
-                            <input className="form-control" type="text" name="email" onChange={this.handleChange}/>
+                            <label>Source:</label>
+                            <input className="form-control" type="text" name="source" onChange={this.handleChange}/>
                         </div><br/><br/>
                         <button className="btn btn-success" type="submit">Submit</button><br/><br/>
                     </form><br/><br/>
@@ -70,4 +73,4 @@ class AddEmployee extends Component {
     }
 }
 
-export default AddEmployee
+export default AddText
