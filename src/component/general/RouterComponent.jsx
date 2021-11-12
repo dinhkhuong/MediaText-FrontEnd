@@ -14,7 +14,8 @@ class RouterComponent extends Component {
             <Router>
                 <HeaderComponent />
                     <Switch>
-                        <Route exact path="/"><WelcomeComponent name="Everett"/></Route>                       
+                        {/* <Route exact path="/"><WelcomeComponent name="Everett"/></Route>    */}
+                        <Route  path="/search/:content" component= {WelcomeComponent} />                    
                         <Route path="/theText/:id" component={AddText} />
                         <Route path="/text/:id/:content" component={UpdateTextComponent} />
                         <Route path="/TextRegistry" exact component={TextRegistryComponent} />

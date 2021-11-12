@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Formik, Form, Field } from 'formik'
-import TextDataService from '../../service/TestDataService'
+import TextDataService from '../../service/TextDataService'
 
 class UpdateTextComponent extends Component {
     constructor(props) {

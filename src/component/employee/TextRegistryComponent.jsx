@@ -1,16 +1,21 @@
 import React, { Component } from 'react'
-import TextDataService from '../../service/TestDataService';
+import TextDataService from '../../service/TextDataService';
 
 class TextRegistryComponent extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            texts: []
+            texts: [],
+
+            search:''
         }
         this.refreshTextRegistry = this.refreshTextRegistry.bind(this)
         this.deleteTextClicked = this.deleteTextClicked.bind(this)
         this.upDateTextClicked = this.upDateTextClicked.bind(this)
         this.addTextClicked = this.addTextClicked.bind(this)
+
+        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleChange = this.handleChange.bind(this)
     }
 
     componentDidMount() {
@@ -42,25 +47,52 @@ class TextRegistryComponent extends Component {
         )
     }
     
-    upDateTextClicked(id, content) {
+    upDateTextClicked(id, content2) {
         console.log('Update Text Clicked')
-        this.props.history.push(`/text/${id}/${content}`)
+        this.props.history.push(`/text/${id}/${content2}`)
     }
 
     addTextClicked() {
         console.log('Add AddText Clicked')
         this.props.history.push(`/theText/-1`)
     }
+
+    //handle search
+    handleChange(event) {
+        console.log('handle change')
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    }
  
-   render() {
+    handleSubmit() {        
+            
+        let find = this.state.search   
+        
+        
+        this.props.history.push(`/search/${find}`)
+        console.log('handle submit')
+    }
+
+
+    render() {
        return(
            <div className="container">
                <h1 style={{textAlign:"center"}}>Text Registry</h1><br/>
                <div className="jumbotron sticky-top"  style={{textAlign: "center",  color: "white"}}>
 
-                    <table className="table table-striped">         
-                       <thead>
-                            <tr class="table-dark" style={{textAlign: "center"}}>    
+
+                    <form onSubmit={this.handleSubmit}>
+                        <input className="form-control me-2" type="search" placeholder="Search" name="search" onChange={this.handleChange}></input>
+                        <button className="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+
+
+                    <table className="table table-striped"> 
+                                
+                       <thead>                           
+
+                            <tr className="table-dark" style={{textAlign: "center"}}>    
                                <th>Id</th>
                                <th>content</th>
                                <th>artist</th>

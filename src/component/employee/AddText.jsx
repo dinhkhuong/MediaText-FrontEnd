@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import TextDataService from '../../service/TestDataService'
+import TextDataService from '../../service/TextDataService'
 
 class AddText extends Component {
     constructor(props) {
