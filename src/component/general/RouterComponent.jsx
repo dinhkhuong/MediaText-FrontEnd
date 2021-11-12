@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import FooterComponent from '../header_footer/FooterComponent'
-import WelcomeComponent from './WelcomeComponent'
+import SearchComponent from './SearchComponent'
 import HeaderComponent from '../header_footer/HeaderComponent'
 import TextRegistryComponent from '../employee/TextRegistryComponent'
 import UpdateTextComponent from '../employee/UpdateTextComponent'
@@ -15,7 +15,7 @@ class RouterComponent extends Component {
                 <HeaderComponent />
                     <Switch>
                         {/* <Route exact path="/"><WelcomeComponent name="Everett"/></Route>    */}
-                        <Route  path="/search/:content" component= {WelcomeComponent} />                    
+                        <Route path="/search/:content" component= {SearchComponent} />                    
                         <Route path="/theText/:id" component={AddText} />
                         <Route path="/text/:id/:content" component={UpdateTextComponent} />
                         <Route path="/TextRegistry" exact component={TextRegistryComponent} />

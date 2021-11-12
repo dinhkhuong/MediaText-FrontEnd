@@ -57,7 +57,12 @@ class UpdateTextComponent extends Component {
                                     </fieldset>
                                     <fieldset>
                                         <label>Category</label>
-                                        <Field className="form-control" type="text" name="category" />
+                                        {/* <Field className="form-control" type="text" name="category" /> */}                                                 
+                                        <Field className="form-control" name="category" as="select">
+                                            <option value="Lyric">Lyric</option>
+                                            <option value="Quote">Quote</option>
+                                            <option value="Script">Script</option>
+                                        </Field>                                        
                                     </fieldset>
                                     <fieldset>
                                         <label>Source</label>

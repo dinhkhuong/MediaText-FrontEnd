@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom'
+//import {Link} from 'react-router-dom'
 import TextDataService from '../../service/TextDataService';
 
-class WelcomeComponent extends Component {
+//class WelcomeComponent extends Component {
+class SearchComponent extends Component {
     constructor(props) {
         super(props)
         this.state={
@@ -11,14 +12,11 @@ class WelcomeComponent extends Component {
         }
         this.refreshTextRegistry = this.refreshTextRegistry.bind(this)
     }
-
     componentDidMount() {
         this.refreshTextRegistry();
     }
-
     refreshTextRegistry() {
-        let aw = this.state.find
-        setTimeout(() => {
+        let aw = this.state.find      
             TextDataService.searchText(aw)
             .then(
                 response => {
@@ -26,19 +24,15 @@ class WelcomeComponent extends Component {
                         texts: response.data,
                     })
                 }
-            )
-        }, 250)
+            )      
     }
-
     render() {
         return(
             <div className="container">
                 <br/><br/>
-                <div className="jumbotron" style={{textAlign:"center", backgroundColor:"Black"}}>
-                    <table className="table table-striped"> 
-                                    
+                <div className="jumbotron" style={{textAlign:"center"}}>
+                    <table className="table table-striped">                                 
                         <thead>                           
-
                                 <tr className="table-dark" style={{textAlign: "center"}}>    
                                 <th>Id</th>
                                 <th>content</th>
@@ -67,4 +61,4 @@ class WelcomeComponent extends Component {
         )
     }
 }
-export default WelcomeComponent;  
+export default SearchComponent;  

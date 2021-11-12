@@ -59,7 +59,14 @@ class AddText extends Component {
                         </div>       
                         <div>
                             <label>Category:</label>
-                            <input className="form-control" type="text" name="category" onChange={this.handleChange}/>
+                            {/* <input className="form-control" type="text" name="category" onChange={this.handleChange} /> */}
+                            <select className="form-select" id="inputGroupSelect01" name="category" onChange={this.handleChange}>
+                                <option selected>Choose...</option>
+                                <option value="Lyric">Lyric</option>
+                                <option value="Quote">Quote</option>
+                                <option value="Script">Script</option>
+                            </select>                        
+                       
                         </div>      
                         <div>
                             <label>Source:</label>

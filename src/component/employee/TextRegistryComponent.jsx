@@ -7,15 +7,17 @@ class TextRegistryComponent extends Component {
         this.state = {
             texts: [],
 
-            search:''
+            search:'' //add property to hold search text input
         }
+        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleChange = this.handleChange.bind(this)
+        
         this.refreshTextRegistry = this.refreshTextRegistry.bind(this)
         this.deleteTextClicked = this.deleteTextClicked.bind(this)
         this.upDateTextClicked = this.upDateTextClicked.bind(this)
         this.addTextClicked = this.addTextClicked.bind(this)
 
-        this.handleSubmit = this.handleSubmit.bind(this)
-        this.handleChange = this.handleChange.bind(this)
+        
     }
 
     componentDidMount() {
@@ -57,41 +59,37 @@ class TextRegistryComponent extends Component {
         this.props.history.push(`/theText/-1`)
     }
 
-    //handle search
+    //handle search text bar
     handleChange(event) {
         console.log('handle change')
         this.setState({
             [event.target.name]: event.target.value
         })
     }
- 
-    handleSubmit() {        
-            
-        let find = this.state.search   
-        
-        
+    //send data and route to search page
+    handleSubmit() {                
+        let find = this.state.search      
         this.props.history.push(`/search/${find}`)
         console.log('handle submit')
     }
 
-
     render() {
        return(
            <div className="container">
-               <h1 style={{textAlign:"center"}}>Text Registry</h1><br/>
+               {/* <h1 style={{textAlign:"center"}}>Text Registry</h1><br/> */}
                <div className="jumbotron sticky-top"  style={{textAlign: "center",  color: "white"}}>
-
-
+                    <br/>
                     <form onSubmit={this.handleSubmit}>
-                        <input className="form-control me-2" type="search" placeholder="Search" name="search" onChange={this.handleChange}></input>
-                        <button className="btn btn-outline-success" type="submit">Search</button>
+                        <input className="form-control me-2" type="search" placeholder="Search"
+                         name="search" onChange={this.handleChange}></input>
+                        {/* <button className="btn btn-outline-success" type="submit">Search</button> */}
                     </form>
+                    <br/>
 
-
-                    <table className="table table-striped"> 
+                    <table className="table table-success table-striped table-hover"> 
                                 
                        <thead>                           
-
+                            
                             <tr className="table-dark" style={{textAlign: "center"}}>    
                                <th>Id</th>
                                <th>content</th>
