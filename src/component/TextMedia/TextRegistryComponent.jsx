@@ -25,6 +25,7 @@ class TextRegistryComponent extends Component {
     }
 
     refreshTextRegistry() {
+        //setState is fast enough to catch up with UI rendering,
         setTimeout(() => {
             TextDataService.retrieveAllTexts()
             .then(
